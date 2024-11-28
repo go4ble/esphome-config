@@ -27,7 +27,20 @@ mdns:
 # TODO disable
 web_server:
 
+i2c:
+  scan: false
+  # sda: GPIO4
+  # scl: GPIO5
+
+ads1115:
+  - address: 0x48 # ADDR pulled to GND
+
 sensor:
+  - platform: ads1115
+    name: VIN
+    multiplexer: A0_GND
+    gain: 4.096
+    update_interval: 5s # TODO "never"
   - platform: wifi_signal
     name: WiFi Signal
     update_interval: 5s # TODO "never"

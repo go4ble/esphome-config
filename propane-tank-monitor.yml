@@ -35,6 +35,8 @@ i2c:
 ads1115:
   - address: 0x48 # ADDR pulled to GND
 
+# TODO do VDD pins need to be programmatically enabled?
+
 sensor:
   - platform: ads1115
     name: VIN
@@ -44,6 +46,11 @@ sensor:
     filters:
       - multiply: 1.99
       - offset: 0.0753
+  - platform: ads1115
+    name: tank_level
+    multiplexer: A1_GND
+    gain: 2.048
+    update_interval: 1s # TODO "never"
   - platform: wifi_signal
     name: WiFi Signal
     update_interval: 5s # TODO "never"

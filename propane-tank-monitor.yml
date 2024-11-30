@@ -51,6 +51,8 @@ sensor:
     multiplexer: A1_GND
     gain: 2.048
     update_interval: 1s # TODO "never"
+    filters:
+      - lambda: return (100.0 * pow(x, 3)) - (514.0 * pow(x, 2)) + (880.0 * x) - 502.0;
   - platform: wifi_signal
     name: WiFi Signal
     update_interval: 5s # TODO "never"

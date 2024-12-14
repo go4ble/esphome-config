@@ -39,10 +39,13 @@ ads1115:
 
 sensor:
   - platform: ads1115
-    name: VIN
+    id: a0_raw
     multiplexer: A0_GND
     gain: 4.096
     update_interval: 5s # TODO "never"
+  - platform: copy
+    source_id: a0_raw
+    name: VIN
     filters:
       - calibrate_linear:
           # 1.99 * x + 0.0753
@@ -61,10 +64,12 @@ sensor:
             - 1.673 -> 3.4
             - 1.621 -> 3.3
   - platform: ads1115
-    name: tank_level
+    id: a1_raw
     multiplexer: A1_GND
     gain: 2.048
     update_interval: 1s # TODO "never"
+  - platform: copy
+    source_id: a1_raw
     filters:
       - calibrate_polynomial:
           # 100 * x^3 - 514 * x^2 + 880x - 502

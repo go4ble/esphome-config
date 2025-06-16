@@ -1,0 +1,33 @@
+esphome:
+  name: air-exchanger
+
+esp8266:
+  board: nodemcuv2
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  password: ""
+
+ota:
+  - platform: esphome
+    password: ""
+
+wifi:
+  domain: ""
+  ap:
+    ssid: "air-exchanger-cp"
+
+captive_portal:
+
+mdns:
+  disabled: true
+
+web_server:
+
+switch:
+  platform: gpio
+  pin: GPIO5
+  name: Air Exchanger Fan

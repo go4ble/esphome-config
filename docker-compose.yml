@@ -6,3 +6,5 @@ services:
       - /etc/localtime:/etc/localtime:ro
     privileged: true
     network_mode: host
+    devices:
+      - /dev/ttyUSB0
